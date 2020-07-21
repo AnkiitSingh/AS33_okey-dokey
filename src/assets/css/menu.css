@@ -1,0 +1,45 @@
+.menu-head-pad{
+    padding-top: 5vh;
+    padding-left: 4vh;
+}
+.menu-btn{
+    border:0px;
+    background-color: #0055a9;
+    width: 10vh;
+    height:10vh;
+}
+.menu-btn-logo{
+    height: 4vh;
+    width: 4vh;
+}
+.menu-btn-text{
+    color:white;
+    font-size: 1.5vh;
+    letter-spacing: 2px;
+}
+.menu-btn-pad{
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e6e9ed;
+}
+.footer-text{
+    padding:2vh;
+    padding-top:3vh;
+    font-size: 1.5vh;
+    letter-spacing: 1px;
+    margin-left: 5vh;
+}
+.govt-logo{
+    height: 6vh;
+}
+.margin-logo{
+    margin-right: 5vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
