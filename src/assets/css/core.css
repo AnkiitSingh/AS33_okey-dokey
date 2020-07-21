@@ -1,0 +1,65 @@
+.core-page-pad{
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 20vh;
+}
+.form-background{
+    background-color: #f8f9fa;
+    padding-top: 2vh;
+}
+.core-title{
+    padding-bottom: 1vh;
+    letter-spacing: 2px;
+    font-size: 2.5vh;
+}
+.form-number{
+    height: 4vh;
+}
+.form-fields{
+    padding-top:3vh;
+}
+.form-document{
+    letter-spacing: 1px;
+    font-size: 2vh;
+}
+.form-attributs{
+    padding-top: 2vh;
+}
+.form-input{
+    height: 3vh;
+    width: 35vh;
+    background-color: #e5e4e5;
+    border:1px solid #898b8e;
+}
+.form-input-seperator{
+    padding-bottom: 2vh;
+}
+.form-danger{
+    font-size: 2.5vh;
+}
+.form-example{
+    padding-top: 3vh;
+}
+.form-dummy-image{
+    height: 20vh;
+    width: 50vh;
+}
+.form-dummy-image1{
+    height: 35vh;
+    width: 30vh;
+}
+.form-submit{
+    padding-left: 28vh;
+    padding-bottom: 3vh;
+}
+.form-submit-btn{
+    color:white;
+    font-size: 2vh;
+    width: 20vh;
+    height: 5vh;
+    border: 0px;
+    background-color: #0055a9;
+    letter-spacing: 2px;
+    border-radius: 1vh;
+}

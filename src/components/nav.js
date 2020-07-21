@@ -1,9 +1,8 @@
 import React from "react";
 import { Navbar, NavDropdown, Nav, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "../assets/css/nav.css";
 import mwcd from "../assets/logo/mwcd.png";
-import help from "../assets/logo/help.png";
+import about from "../assets/logo/about.png";
 import official from "../assets/logo/official.png";
 import GOI from "../assets/logo/GOI.png";
 
@@ -24,7 +23,7 @@ const NavHead = ({ history }) => {
     }
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="light">
+            <Navbar collapseOnSelect expand="lg" bg="light" fixed="top">
                 <Navbar.Brand className="nav-pad-left">
                     <img className="nav-logo" src={mwcd} alt="ministry" />
                     <span className="nav-brand">MWCD</span>
@@ -53,12 +52,12 @@ const NavHead = ({ history }) => {
                                 </button>
                             </a>
                         </div>
-                        <Link to="/">
+                        <a href="https://wcd.nic.in/about-us/about-ministry">
                             <button className="text-center button-back">
-                                <img src={help} alt="official" className="nav-button-logo" />
-                                <div className="button-text-pad">Help</div>
+                                <img src={about} alt="official" className="nav-button-logo" />
+                                <div className="button-text-pad">About</div>
                             </button>
-                        </Link>
+                        </a>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
