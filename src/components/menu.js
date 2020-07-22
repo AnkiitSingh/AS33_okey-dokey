@@ -38,7 +38,7 @@ const Menu = ({ history }) => {
                             <div>
                                 <img src={form} alt="home" className="menu-btn-logo" />
                             </div>
-                            <div className="menu-btn-text">Online</div>
+                            <div className="menu-btn-text">Register</div>
                         </button>
                     </a>
                 </span>
