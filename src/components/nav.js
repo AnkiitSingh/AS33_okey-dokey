@@ -5,18 +5,20 @@ import mwcd from "../assets/logo/mwcd.png";
 import about from "../assets/logo/about.png";
 import official from "../assets/logo/official.png";
 import GOI from "../assets/logo/GOI.png";
-
+import logout from "../helper/ngoLogout";
 
 const NavHead = ({ history }) => {
+    const local = localStorage.getItem("jwt");
+    const user = JSON.parse(local);
     const logCheck = () => {
-        let local = 5;
-        if (local === 5) {
+        if (local !== null) {
+            const userMail = "Welcome," + user.ngo.email
             return (
-                <NavDropdown title="Welcome, Ankit" id="collasible-nav-dropdown">
+                <NavDropdown title={userMail} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Update Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item><Button>LogOut</Button></NavDropdown.Item>
+                    <NavDropdown.Item><Button onClick={logout}>LogOut</Button></NavDropdown.Item>
                 </NavDropdown>
             )
         }

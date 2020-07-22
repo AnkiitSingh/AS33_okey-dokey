@@ -1,12 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import Menu from "../components/menu"
 import user from "../assets/logo/user.png";
 import goi from "../assets/logo/GOI.png";
-
+import signin from "../helper/ngoLogin";
+import authenticate from "../helper/ngoAuthenticate";
+import { Redirect } from 'react-router-dom';
+import isAutheticated from "../helper/ngoIsAuthenticated";
 const Login = () => {
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+        error: "",
+        success: false
+    });
+    const { email, password, error } = values;
+    const handleChange = (name) => (event) => {
+        setValues({ ...values, error: false, [name]: event.target.value });
+    };
+    const onSubmit = (event) => {
+        event.preventDefault();
+        setValues({ ...values, error: false });
+        signin({ email, password })
+            .then((data) => {
+                if (data.error) {
+                    console.log("error")
+                    setValues({ ...values, error: data.error, success: false });
+                } else {
+                    authenticate(data, () => {
+                        setValues({
+                            ...values,
+                            success: true,
+                            email: "",
+                            password: ""
+                        });
+                    })
+                }
+            })
+            .catch(() => { console.log("signin request failed") });
+    };
+    const errorMessage = () => {
+        if (error === "" || error === false) {
+            return ("")
+        }
+        return (
+            <div className="alert alert-danger">
+                {error}
+            </div>
+        );
+    };
+    const performRedirect = () => {
+        if (isAutheticated()) {
+            return <Redirect to="/" />;
+        }
+    };
     return (
         <div>
             <Menu />
+            {performRedirect()}
             <div className="core-page-pad">
                 <div className="core-title">
                     Login
@@ -25,19 +75,20 @@ const Login = () => {
                                     <div className="login-field-name">
                                         Email <span className="text-danger">*</span>
                                     </div>
-                                    <input type="text" className="card-input"></input>
+                                    <input type="text" className="card-input" onChange={handleChange("email")}></input>
                                 </div>
                                 <div className="login-fields">
                                     <div className="login-field-name">
                                         Password <span className="text-danger">*</span>
                                     </div>
-                                    <input type="text" className="card-input"></input>
+                                    <input type="password" className="card-input" onChange={handleChange("password")}></input>
                                 </div>
                                 <br />
                                 <div className=" text-center">
-                                    <button className="form-button">Submit</button>
+                                    <button className="form-button" onClick={onSubmit}>Submit</button>
                                 </div>
                                 <br />
+                                <div className="text-center">{errorMessage()}</div>
                             </div>
                         </div>
                     </div>

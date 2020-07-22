@@ -4,8 +4,8 @@
 }
 .menu-btn{
     border:0px;
-    width: 10vh;
-    height:10vh;
+    width: 12vh;
+    height:11vh;
 }
 .menu-btn-logo{
     height: 4vh;
@@ -13,7 +13,7 @@
 }
 .menu-btn-text{
     color:white;
-    font-size: 1.5vh;
+    font-size: 1.4vh;
     letter-spacing: 2px;
 }
 .menu-btn-pad{
