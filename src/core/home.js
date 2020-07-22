@@ -5,8 +5,11 @@ const Home = () => {
     return (
         <div>
             <Menu />
-            <br />
-            This is the Home page
+            <div className="core-page-pad">
+                <div className="core-title">
+                    Home
+                </div>
+            </div>
         </div>
     )
 }

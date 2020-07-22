@@ -7,6 +7,7 @@
 .form-background{
     background-color: #f8f9fa;
     padding-top: 2vh;
+    padding-bottom: 3vh;
 }
 .core-title{
     padding-bottom: 1vh;
@@ -46,12 +47,11 @@
     width: 50vh;
 }
 .form-dummy-image1{
-    height: 35vh;
+    height: 30vh;
     width: 30vh;
 }
 .form-submit{
     padding-left: 28vh;
-    padding-bottom: 3vh;
 }
 .form-submit-btn{
     color:white;
@@ -61,5 +61,57 @@
     border: 0px;
     background-color: #0055a9;
     letter-spacing: 2px;
+    border-radius: 1vh;
+}
+
+/* Login Section Starts Here */
+
+.login-heading{
+    padding-bottom: 3vh;
+    letter-spacing: 2px;
+    font-size: 2.2vh;
+}
+.card-padding{
+    padding-left: 22vh;
+    padding-right: 22vh;
+}
+.card-image{
+    background-color: #0055a9;
+    height: 8vh;
+    border-radius: 10vh;
+}
+.card-logo{
+    padding-top: 2vh;
+    padding-bottom: 1vh;
+}
+.login-border{
+    border-right: 1px solid #898b8e;
+}
+.login-fields{
+    margin-left: 5vh;
+}
+.login-field-name{
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+}
+.login-field-name{
+    letter-spacing: 2px;
+    font-size: 2vh;
+}
+.card-input{
+    height: 4vh;
+    width: 45vh;
+    border-radius: 1vh;
+    border:1px solid #898b8e;
+    background-color: #e5e4e5;
+}
+.form-button{
+    border: 0px;
+    background-color:#0055a9;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    height: 5vh;
+    width: 20vh;
     border-radius: 1vh;
 }
