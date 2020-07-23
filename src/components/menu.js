@@ -2,7 +2,7 @@ import React from "react";
 import NavHead from "./nav";
 import "../assets/css/menu.css";
 import { withRouter } from "react-router-dom";
-import govt from "../assets/logo/govt.png";
+/*import govt from "../assets/logo/govt.png"; */
 import home from "../assets/logo/home.png";
 import forms from "../assets/logo/forms.png";
 import form from "../assets/logo/form.png";
@@ -175,7 +175,7 @@ const Menu = ({ history }) => {
                 {/* Footer Section Starts From here*/}
 
 
-                <div className="footer">
+                {/*<div className="footer">
                     <div className="row">
                         <div className="col footer-text">
                             &copy; Ministry of Women and Child development
@@ -184,7 +184,7 @@ const Menu = ({ history }) => {
                             <img src={govt} alt="govt-logo" className="govt-logo" />
                         </div>
                     </div>
-                </div>
+    </div> */}
             </div>
         </div>
     )

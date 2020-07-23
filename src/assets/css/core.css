@@ -11,8 +11,19 @@
 }
 .core-title{
     padding-bottom: 1vh;
+    padding-top: 1vh;
     letter-spacing: 2px;
     font-size: 2.5vh;
+    background-color:#10274c ;
+    color: white;
+    width: 25vh;
+    text-align: center;
+    border-bottom:1px solid #898b8e;
+}
+.core-error{
+padding-top: 25vh;
+letter-spacing: 3px;
+font-size: 3vh;
 }
 .form-number{
     height: 4vh;

@@ -1,0 +1,79 @@
+.IMO-page{
+    background-color: #e5e4e5;
+    padding-bottom: 5vh;
+}
+.profile-top{
+    padding-top: 5vh;
+}
+.profile-photos{
+    padding-top: 3vh;
+    letter-spacing: 2px;
+    font-size: 2.5vh;
+    text-decoration: underline;
+    padding-bottom: 5vh;
+}
+.profile-aadhar{
+    height: 60%;
+    width: 75%;
+}
+.profile-certificate{
+    height: 80%;
+    width: 40%;
+}
+.profile-info{
+    padding-top: 7vh;
+    padding-bottom: 5vh;
+    letter-spacing: 2px;
+    font-size: 2.5vh;
+    text-decoration: underline;
+}
+.profile-table{
+    background-color: white;
+}
+.loan-content{
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-top: 1vh;
+}
+.loan-form-number{
+    height: 4vh;
+}
+.loan-fields{
+    letter-spacing: 2px;
+    padding-left: 2vh;
+}
+.loan-example{
+    padding-bottom: 4vh;
+}
+.loan-form-file{
+    padding-top: 1vh;
+    letter-spacing: 2px;
+    padding-bottom: 2vh;
+}
+.laon-form-descroption{
+    font-size: 1.5vh;
+    padding-left: 5vh;
+    letter-spacing: 1px;
+}
+.laon-field-padding{
+    padding-top: 3vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+}
+.loan-image{
+    height: 23vh;
+    width: 50vh;
+}
+.laon-field-padding1{
+    padding-top: 7vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+}
+.loan-form-submit{
+    height: 5vh;
+    border: 0px;
+    width: 20vh;
+    color: white;
+    border-radius: 1vh;
+    background-color: #0055a9;
+}
