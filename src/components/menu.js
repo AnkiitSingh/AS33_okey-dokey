@@ -4,11 +4,16 @@ import "../assets/css/menu.css";
 import { withRouter } from "react-router-dom";
 import govt from "../assets/logo/govt.png";
 import home from "../assets/logo/home.png";
+import forms from "../assets/logo/forms.png";
 import form from "../assets/logo/form.png";
 import login from "../assets/logo/login.png";
 import help from "../assets/logo/help.png";
 import dashboard from "../assets/logo/dashboard.png";
 import profile from "../assets/logo/user.png";
+import pending from "../assets/logo/pending.png";
+import loan from "../assets/logo/loan.png";
+import list from "../assets/logo/list.png";
+import record from "../assets/logo/records.png";
 
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
@@ -48,7 +53,7 @@ const Menu = ({ history }) => {
                 </span>
             )
         }
-        if (user.ngo.role === 1) {
+        if (user.user.role === 1) {
             return (
                 <span>
                     <span className="menu-btn-pad" >
@@ -75,9 +80,65 @@ const Menu = ({ history }) => {
                         <a href="/LoanForm">
                             <button className="menu-btn" style={currentTab(history, "/LoanForm")}>
                                 <div>
-                                    <img src={form} alt="home" className="menu-btn-logo" />
+                                    <img src={forms} alt="home" className="menu-btn-logo" />
                                 </div>
                                 <div className="menu-btn-text">Loan</div>
+                            </button>
+                        </a>
+                    </span>
+                </span>
+            )
+        }
+        if (user.user.role === 3) {
+            return (
+                <span>
+                    <span className="menu-btn-pad" >
+                        <a href="/profile">
+                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                                <div>
+                                    <img src={pending} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">IMO App..</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/profile">
+                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                                <div>
+                                    <img src={loan} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Loan Req..</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/profile">
+                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                                <div>
+                                    <img src={list} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">IMO List</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/profile">
+                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                                <div>
+                                    <img src={record} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Records</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/profile">
+                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                                <div>
+                                    <img src={dashboard} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Dashboard</div>
                             </button>
                         </a>
                     </span>

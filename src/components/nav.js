@@ -12,7 +12,7 @@ const NavHead = ({ history }) => {
     const user = JSON.parse(local);
     const logCheck = () => {
         if (local !== null) {
-            const userMail = "Welcome," + user.ngo.email
+            const userMail = "Welcome," + user.user.email
             return (
                 <NavDropdown title={userMail} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
