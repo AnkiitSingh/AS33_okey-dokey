@@ -93,8 +93,8 @@ const Menu = ({ history }) => {
             return (
                 <span>
                     <span className="menu-btn-pad" >
-                        <a href="/profile">
-                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                        <a href="/Imo/imoVerify">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/imoVerify")}>
                                 <div>
                                     <img src={pending} alt="home" className="menu-btn-logo" />
                                 </div>
@@ -103,8 +103,8 @@ const Menu = ({ history }) => {
                         </a>
                     </span>
                     <span className="menu-btn-pad" >
-                        <a href="/profile">
-                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                        <a href="/Imo/LoanVerify">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/LoanVerify")}>
                                 <div>
                                     <img src={loan} alt="home" className="menu-btn-logo" />
                                 </div>

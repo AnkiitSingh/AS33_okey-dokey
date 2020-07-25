@@ -7,7 +7,9 @@ import Help from "./core/help";
 import ImoDashborad from "./ImoPages/dashboard";
 import Profile from "./ImoPages/profile";
 import LoanForm from "./ImoPages/loanForm";
-import LoanInfo from "./ImoPages/loanInfo"
+import LoanInfo from "./ImoPages/loanInfo";
+import ImoVerify from "./GovtPages/imoVerify";
+import LoanVerify from "./GovtPages/laonVerify";
 const Routes = () => {
     return (
         <BrowserRouter>
@@ -20,6 +22,8 @@ const Routes = () => {
                 <Route path="/profile" exact component={Profile}></Route>
                 <Route path="/LoanForm" exact component={LoanForm}></Route>
                 <Route path="/Imo/loanInfo/:id" exact component={LoanInfo}></Route>
+                <Route path="/Imo/imoVerify" exact component={ImoVerify}></Route>
+                <Route path="/Imo/LoanVerify" exact component={LoanVerify}></Route>
             </Switch>
         </BrowserRouter>
     )
