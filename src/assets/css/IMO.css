@@ -3,7 +3,7 @@
     padding-bottom: 5vh;
 }
 .profile-top{
-    padding-top: 5vh;
+    padding-top: 3vh;
 }
 .profile-photos{
     padding-top: 3vh;
@@ -76,4 +76,72 @@
     color: white;
     border-radius: 1vh;
     background-color: #0055a9;
+}
+
+/* Dashboard section starts here */
+.last-updated{
+    padding-top: 2vh;
+    padding-left: 0vh;
+    padding-bottom: 25vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    background-color: #e5e4e5;
+}
+.reload-btn-space{
+    padding-left: 2vh;
+}
+.reload-btn{
+    background-color: #0055a9;
+    height: 5vh;
+    width: 5vh;
+    border: 0px;
+    border-radius: 10vh;
+}
+.reload-btn-img{
+    height: 3vh;
+    width: 3vh;
+}
+.dashboard{
+    padding-left: 5vh;
+    padding-top: 7vh;
+}
+.dashboard-list{
+    padding-right: 1vh;
+}
+.dashboard-btn{
+    width: 100%;
+    border: 0px;
+    border-radius: 1vh;
+    background-color: white;
+    padding-bottom: 4vh;
+    padding-top: 4vh;
+    letter-spacing: 1px;
+    font-size: 2vh;
+}
+.dash-doc-img{
+    height: 5vh;
+}
+
+/* loan info section starts here */
+.loan-info-heading{
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    letter-spacing: 2px;
+    font-size: 2.5vh;
+}
+.loan-content{
+    margin-left: 5vh;
+    background-color: white;
+    margin-right: 5vh;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+.key-value{
+    padding-left: 2vh;
+    letter-spacing: 2px;
+    font-size: 2.2vh;
+    font-weight: 500;
+}
+.loan-info-border{
+    border-left: 1px solid;
 }

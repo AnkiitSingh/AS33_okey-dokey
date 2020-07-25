@@ -65,6 +65,10 @@ const LoanForm = () => {
                             </span>
                             <Form className="laon-field-padding">
                                 <Form.Group >
+                                    <Form.Label>Name<span className="text-danger">*</span></Form.Label>
+                                    <Form.Control type="text" placeholder="Name of the candidate" />
+                                </Form.Group>
+                                <Form.Group >
                                     <Form.Label>Bank Account No<span className="text-danger">*</span></Form.Label>
                                     <Form.Control type="text" placeholder="Enter Account No." />
                                 </Form.Group>
