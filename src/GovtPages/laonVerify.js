@@ -64,7 +64,7 @@ class LoanVerify extends Component {
                                     return (
                                         <div className="col-md-6 col-lg-2" key={index}>
                                             <span key={index} className="dashboard-list">
-                                                <a href={`/Imo/loanInfo/${data._id}`}>
+                                                <a href={`/Imo/LoanVerify/info/${data._id}`}>
                                                     <button className="dashboard-btn">
                                                         <img src={document} alt="document" className="dash-doc-img" />
                                                         {data.Status}

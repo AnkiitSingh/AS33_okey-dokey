@@ -135,6 +135,7 @@
     margin-right: 5vh;
     line-height: 2;
     letter-spacing: 1px;
+    border-top: 1px solid;
 }
 .key-value{
     padding-left: 2vh;
@@ -144,4 +145,21 @@
 }
 .loan-info-border{
     border-left: 1px solid;
+}
+.loan-photos{
+    height: 30vh;
+    width: 70vh;
+}
+.loan-info-seperate{
+    padding-top: 4vh;
+    border-top: 1px solid;
+    padding-bottom: 5vh;
+}
+.loan-photo-text{
+    letter-spacing: 2px;
+    font-size: 2.2vh;
+    padding-bottom: 1vh;
+}
+.loan-certificate{
+    height: 50vh;
 }
