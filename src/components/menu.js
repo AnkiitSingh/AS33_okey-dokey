@@ -14,6 +14,7 @@ import pending from "../assets/logo/pending.png";
 import loan from "../assets/logo/loan.png";
 import list from "../assets/logo/list.png";
 import record from "../assets/logo/records.png";
+import repayment from "../assets/logo/repayment.png";
 
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
@@ -109,6 +110,16 @@ const Menu = ({ history }) => {
                                     <img src={loan} alt="home" className="menu-btn-logo" />
                                 </div>
                                 <div className="menu-btn-text">Loan Req..</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/Imo/loanRepayment">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/loanRepayment")}>
+                                <div>
+                                    <img src={repayment} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Repayment</div>
                             </button>
                         </a>
                     </span>
