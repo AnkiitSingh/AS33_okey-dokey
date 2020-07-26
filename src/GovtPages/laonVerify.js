@@ -91,7 +91,7 @@ class LoanVerify extends Component {
                 <Menu />
                 <div className="core-page-pad">
                     <div className="core-title">
-                        Pending Laon Req..
+                        Pending Loan Requests
                     </div>
                     <div >
                         {logCheck()}
