@@ -7,7 +7,7 @@ import three from "../assets/logo/three.png";
 import aadhar from "../assets/logo/aadhar.jpg"
 import imoCertificate from "../assets/logo/imoCertificate.jpg";
 import { createNgo } from "../helper/createNgo.js";
-import { Redirect } from 'react-router-dom';
+import Footer from "../components/footer";
 
 const Form = () => {
     const [values, setValues] = useState({
@@ -49,7 +49,19 @@ const Form = () => {
             } else {
                 alert("Form Successfully Filled")
                 setValues({
+                    ...values,
                     success: true,
+                    name: "",
+                    email: "",
+                    password: "",
+                    NgoId: "",
+                    NgoRegNo: "",
+                    NgoRegCertificate: "",
+                    AadharPhoto: "",
+                    NgoHead: "",
+                    NgoSector: "",
+                    error: "",
+                    formData: ""
                 });
             }
         });
@@ -67,17 +79,12 @@ const Form = () => {
     const successMessage = () => {
         if (success === true)
             return (
-                <div className="alert alert-success">
+                <div className="alert alert-success text-center">
                     <h4>Form Submit Complete, You can now Log in to apply for loans !
                     </h4>
                 </div>
             )
     }
-    const performRedirect = () => {
-        if (success === true) {
-            return <Redirect to="/login" />;
-        }
-    };
     return (
         <div>
             <Menu />
@@ -85,6 +92,7 @@ const Form = () => {
                 <div className="core-title">
                     IMO Online Registration
                 </div>
+                {successMessage()}
                 <div className="row form-background">
                     <div className="col-md-12 col-lg-4">
                         <img src={one} alt="number" className="form-number"></img>&nbsp; Aadhar Upload
@@ -159,14 +167,14 @@ const Form = () => {
                                         <button className="form-submit-btn" onClick={onSubmit}>Submit</button>
                                     </div>
                                     <br />
-                                    <div className="text-center">{errorMessage()}{successMessage()}</div>
+                                    <div className="text-center">{errorMessage()}</div>
                                 </div>
-                                {performRedirect()}
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </div >
     )
 }

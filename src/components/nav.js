@@ -15,8 +15,7 @@ const NavHead = ({ history }) => {
             const userMail = "Welcome," + user.user.email
             return (
                 <NavDropdown title={userMail} id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Update Profile</NavDropdown.Item>
+                    <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item><Button onClick={logout}>LogOut</Button></NavDropdown.Item>
                 </NavDropdown>

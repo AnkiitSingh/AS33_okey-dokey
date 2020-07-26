@@ -7,6 +7,8 @@ import Deptsignin from "../helper/DeptLogin";
 import authenticate from "../helper/ngoAuthenticate";
 import { Redirect } from 'react-router-dom';
 import isAutheticated from "../helper/ngoIsAuthenticated";
+import Footer from "../components/footer";
+
 const Login = () => {
     const [values, setValues] = useState({
         email: "",
@@ -158,6 +160,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

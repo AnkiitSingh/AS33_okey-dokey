@@ -1,0 +1,93 @@
+.background{
+    background-image: url("../logo/bg.jpg");
+    height: 80vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.back-color{
+    background-color: rgba(8, 7, 7, 0.6);
+    color:white;
+    height: 80vh;
+}
+.home-heading{
+    padding-top: 30vh;
+    font-size: 4.5vh;
+    letter-spacing: 2px;
+    padding-bottom: 5vh;
+}
+.home-btn{
+    height: 5vh;
+    color:white;
+    border: 0px;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    background-color: red;
+    border-radius: 1vh;
+    letter-spacing: 2px;
+}
+.home-desc{
+    padding-top: 7vh;
+    font-size: 3vh;
+    letter-spacing: 2px;
+}
+.home-about{
+    padding-top: 5vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 5vh;
+}
+.home-pad{
+    padding-left: 2vh;
+    padding-right: 2vh;
+}
+.home-back{
+    background-color: #e5e4e5;
+}
+.home-btn2{
+    background-color:#166b6c ;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    border: 0px;
+    border-radius: 1vh;
+    color:white;
+    height: 5vh;
+}
+.home-cover-png{
+    height: 40vh;
+    width: 50vh;
+}
+.home-back2{
+    background-color: #e5e4e5;
+}
+.home-png{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+.home-back3{
+    background-image: url("../logo/bg2.jpg");
+    background-size: cover;
+}
+.back-color2{
+    background-color: rgba(8, 7, 7, 0.7);
+    padding-bottom: 5vh;
+}
+.home-desc2{
+    padding-top: 7vh;
+    font-size: 3vh;
+    letter-spacing: 2px;
+    color:white
+}
+.home-about2{
+    padding-top: 5vh;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 5vh;
+    color: white;
+}

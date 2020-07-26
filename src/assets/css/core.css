@@ -2,7 +2,7 @@
     padding-left: 5vh;
     padding-right: 5vh;
     padding-top: 2vh;
-    padding-bottom: 20vh;
+    padding-bottom: 5vh;
 }
 .form-background{
     background-color: #f8f9fa;
@@ -21,9 +21,9 @@
     border-bottom:1px solid #898b8e;
 }
 .core-error{
-padding-top: 25vh;
-letter-spacing: 3px;
-font-size: 3vh;
+    padding-top: 25vh;
+    letter-spacing: 3px;
+    font-size: 3vh;
 }
 .form-number{
     height: 4vh;
@@ -111,7 +111,7 @@ font-size: 3vh;
 }
 .card-input{
     height: 4vh;
-    width: 45vh;
+    width: 90%;
     border-radius: 1vh;
     border:1px solid #898b8e;
     background-color: #e5e4e5;
