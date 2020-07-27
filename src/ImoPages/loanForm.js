@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Menu from "../components/menu";
 import one from "../assets/logo/one.png";
 import two from "../assets/logo/two.png";
@@ -6,9 +6,83 @@ import three from "../assets/logo/three.png";
 import { Form } from "react-bootstrap"
 import aadhar from "../assets/logo/aadhar.jpg";
 import statement from "../assets/logo/BankStatement.png";
+import { createLoan } from "../helper/createLoan";
+
 const LoanForm = () => {
     const local = localStorage.getItem("jwt");
     const user = JSON.parse(local);
+    const [values, setValues] = useState({
+        LoanMediator: "",
+        CandidateName: "",
+        RequestedAmount: "",
+        AccountName: "",
+        LoanAccount: "",
+        AccountIFSC: "",
+        TransactionId: "",
+        BankPassbook: "",
+        AadharPhoto: "",
+        IncomeLevel: "",
+        EconomicActivity: "",
+        Age: "",
+        Saving: "",
+        FamilyStrength: "",
+        Caste: "",
+        Religion: "",
+        LiteracyLevel: "",
+        error: "",
+        success: false,
+        formData: ""
+    });
+    const { formData, error, success, LoanMediator } = values;
+
+    const preload = () => {
+        setValues({ formData: new FormData() });
+    }
+
+    useEffect(() => {
+        preload();
+    }, []);
+
+    const handleChange = name => event => {
+        const value = name === "AadharPhoto" || name === "BankPassbook" ? event.target.files[0] : event.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: value, error: "" });
+        formData.append('LoanMediator', user.user._id);
+    };
+    const errorMessage = () => {
+        if (error === "" || error === false) {
+            return (null)
+        }
+        return (
+            <div className="alert alert-danger">
+                {error}
+            </div>
+        );
+    };
+    const successMessage = () => {
+        if (success === true)
+            return (
+                <div className="alert alert-success text-center">
+                    <h4>Loan Form successfully submitted!, You can check current status on Dashboard.
+                    </h4>
+                </div>
+            )
+    }
+    const onSubmit = event => {
+        event.preventDefault();
+        setValues({ ...values, error: "", loading: true });
+        createLoan(formData).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                alert("Form Successfully Filled")
+                setValues({
+                    ...values,
+                    success: true,
+                });
+            }
+        });
+    };
     const logCheck = () => {
         if (localStorage.getItem("jwt") === null) {
             return (
@@ -36,7 +110,7 @@ const LoanForm = () => {
                                 Loan Bearer Aadhar photo
                             </span>
                             <div className="loan-form-file">
-                                <input type="file"></input>
+                                <input type="file" onChange={handleChange("AadharPhoto")}></input>
                             </div>
                             <div className="loan-example">
                                 Example
@@ -50,7 +124,7 @@ const LoanForm = () => {
                             <br />
                             <span className="laon-form-descroption">(Please provide a clear image of last 6 month bank statement)</span>
                             <div className="loan-form-file">
-                                <input type="file"></input>
+                                <input type="file" onChange={handleChange("BankPassbook")}></input>
                             </div>
                             <div className="loan-example">
                                 Example
@@ -66,31 +140,31 @@ const LoanForm = () => {
                             <Form className="laon-field-padding">
                                 <Form.Group >
                                     <Form.Label>Name<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Name of the candidate" />
+                                    <Form.Control type="text" placeholder="Name of the candidate" onChange={handleChange("CandidateName")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Bank Account No<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Account No." />
+                                    <Form.Control type="text" placeholder="Enter Account No." onChange={handleChange("LoanAccount")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Bank Account IFSC code<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter IFSC code" />
+                                    <Form.Control type="text" placeholder="Enter IFSC code" onChange={handleChange("AccountIFSC")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Bank Account Name<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Account Name" />
+                                    <Form.Control type="text" placeholder="Enter Account Name" onChange={handleChange("AccountName")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Requested Amount<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Requested Amount" />
+                                    <Form.Control type="text" placeholder="Requested Amount" onChange={handleChange("RequestedAmount")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Income Level<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Income level" />
+                                    <Form.Control type="text" placeholder="Enter Income level" onChange={handleChange("IncomeLevel")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Economic Activity<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Economic activity" />
+                                    <Form.Control type="text" placeholder="Enter Economic activity" onChange={handleChange("EconomicActivity")} />
                                 </Form.Group>
                             </Form>
                         </div>
@@ -98,31 +172,36 @@ const LoanForm = () => {
                             <Form className="laon-field-padding1">
                                 <Form.Group >
                                     <Form.Label>Age<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearer Age." />
+                                    <Form.Control type="text" placeholder="Bearer Age." onChange={handleChange("Age")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Savings<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearer Savings" />
+                                    <Form.Control type="text" placeholder="Bearer Savings" onChange={handleChange("Saving")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Family Strength<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Totla no of family members" />
+                                    <Form.Control type="text" placeholder="Totla no of family members" onChange={handleChange("FamilyStrength")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Caste<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearers caste" />
+                                    <Form.Control type="text" placeholder="Bearers caste" onChange={handleChange("Caste")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Religion<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearers religion" />
+                                    <Form.Control type="text" placeholder="Bearers religion" onChange={handleChange("Religion")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Literacy Level<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearers literacy level" />
+                                    <Form.Control type="text" placeholder="Bearers literacy level" onChange={handleChange("LiteracyLevel")} />
                                 </Form.Group>
                             </Form>
                             <div className="text-center">
-                                <button className="loan-form-submit">Submit</button>
+                                <button className="loan-form-submit" onClick={onSubmit}>Submit</button>
+                            </div>
+                            <div >
+                                {errorMessage()}
+                                {successMessage()}
+                                {JSON.stringify(LoanMediator)}
                             </div>
                         </div>
                     </div>
