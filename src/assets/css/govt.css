@@ -1,0 +1,46 @@
+.app-rej{
+    padding-top: 5vh;
+    font-size: 2.5vh;
+    letter-spacing: 2px;
+    border-top: 1px solid;
+}
+.decision-btn{
+    padding-top: 5vh;
+}
+.approve-btn{
+    height: 5vh;
+    color:white;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    border: 0px;
+    border-radius: 1vh;
+    width: 20vh;
+    background-color: #5e72e4;
+}
+.reject-btn{
+    height: 5vh;
+    color:white;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    border: 0px;
+    border-radius: 1vh;
+    width: 20vh;
+    background-color: red;
+}
+.decision-padding{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top:1px solid ;
+}
+.decision-padding1{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top:1px solid ;
+    border-left: 1px solid;
+}
+.reason-input{
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 1px solid
+}
