@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Menu from "../components/menu";
 import { API } from '../Api';
+import { LoanApprove, LoanReject } from "../helper/loanApprove";
 
 class LoanVerifyInfo extends Component {
     constructor(props) {
@@ -8,8 +9,18 @@ class LoanVerifyInfo extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            SanctionedAmount: "",
+            DateofReturn: "",
+            CreditScore: "",
+            LoanIntrest: "",
+            InstallmentDetails: "",
+            FormReason: ""
         };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event, name) {
+        this.setState({ [name]: event.target.value });
     }
     componentDidMount() {
         const local = localStorage.getItem("jwt");
@@ -25,8 +36,9 @@ class LoanVerifyInfo extends Component {
         }
         this.setState({ isLoaded: true })
     }
+
     render() {
-        const { items } = this.state;
+        const { items, SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails, FormReason } = this.state;
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -46,6 +58,48 @@ class LoanVerifyInfo extends Component {
                     )
                 }
             }
+            const onApprove = (event) => {
+                if (!SanctionedAmount || !DateofReturn || !CreditScore || !LoanIntrest || !InstallmentDetails) {
+                    return (
+                        alert("Please fill complete information")
+                    )
+                }
+                else {
+                    event.preventDefault();
+                    LoanApprove({ SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails }, items._id)
+                        .then((data) => {
+                            if (data.error) {
+                                console.log(data.error);
+                            }
+                        })
+                        .then(() => alert("Loan Approved"))
+                        .then(() => { window.location.reload(false); })
+                        .catch((data) => {
+                            console.log(data.error);
+                        });
+                }
+            };
+            const onReject = (event) => {
+                if (!FormReason) {
+                    return (
+                        alert("Please enter reason to reject form")
+                    )
+                }
+                else {
+                    event.preventDefault();
+                    LoanReject({ FormReason }, items._id)
+                        .then((data) => {
+                            if (data.error) {
+                                console.log(data.error);
+                            }
+                        })
+                        .then(() => alert("Loan Form Rejected"))
+                        .then(() => { window.location.reload(false); })
+                        .catch((data) => {
+                            console.log(data.error);
+                        });
+                }
+            };
             return (
                 <div className="IMO-page">
                     <div className="loan-info-heading text-center">
@@ -92,6 +146,38 @@ class LoanVerifyInfo extends Component {
                                     Bank Statement
                                 </div>
                                 <img src={`${API}/loanForm/getPassbook/${items._id}`} alt="aadhar" className="loan-photos" />
+                            </div>
+                            <div className="col-sm-12 col-md-6 decision-padding">
+                                <div className="command-text text-center">Loan Rejection</div>
+                                Rejection Reason:
+                                <br />
+                                <input className="reason-input" placeholder="Enter Rejection Reason" onChange={(e) => this.handleChange(e, 'FormReason')}></input>
+                                <br /><br />
+                                <div className="text-center">
+                                    <button className="reject-btn" onClick={onReject}>Reject!</button>
+                                </div>
+                            </div>
+                            <div className="col-sm-12 col-md-6 decision-padding1">
+                                <div className="command-text text-center">Loan Approval</div>
+                                Totla Sanctioned Amount:
+                                <br />
+                                <input className="reason-input" placeholder="Enter Total Sanctioned amount" onChange={(e) => this.handleChange(e, 'SanctionedAmount')}></input>
+                                <br /><br />
+                                Loan Return date: <br />
+                                <input className="reason-input" placeholder="Loan Return Date" onChange={(e) => this.handleChange(e, 'DateofReturn')}></input>
+                                <br /><br />
+                                Enter Credit Sore: <br />
+                                <input className="reason-input" placeholder="Credit Score" onChange={(e) => this.handleChange(e, 'CreditScore')}></input>
+                                <br /><br />
+                                Loan Intrest: <br />
+                                <input className="reason-input" placeholder="Loan Intrest" onChange={(e) => this.handleChange(e, 'LoanIntrest')}></input>
+                                <br /><br />
+                                Installment Details: <br />
+                                <input className="reason-input" placeholder="Installment values with comma" onChange={(e) => this.handleChange(e, 'InstallmentDetails')}></input>
+                                <br /><br />
+                                <div className="text-center">
+                                    <button onClick={onApprove} className="approve-btn">Approve !</button>
+                                </div>
                             </div>
                         </div>
                     </div>
