@@ -7,6 +7,7 @@ import { Form } from "react-bootstrap"
 import aadhar from "../assets/logo/aadhar.jpg";
 import statement from "../assets/logo/BankStatement.png";
 import { createLoan } from "../helper/createLoan";
+import { API } from "../Api";
 
 const LoanForm = () => {
     const local = localStorage.getItem("jwt");
@@ -33,6 +34,18 @@ const LoanForm = () => {
         success: false,
         formData: ""
     });
+    const [Imo, setImo] = useState({});
+    const [hasError, setErrors] = useState(false);
+
+    async function fetchData() {
+        if (localStorage.getItem("jwt") !== null) {
+            const res = await fetch(`${API}/getNgo/${user.user._id}`);
+            res
+                .json()
+                .then(res => setImo(res))
+                .catch(err => setErrors(err));
+        }
+    }
     const { formData, error, success, LoanMediator } = values;
 
     const preload = () => {
@@ -40,6 +53,7 @@ const LoanForm = () => {
     }
 
     useEffect(() => {
+        fetchData();
         preload();
     }, []);
 
@@ -99,6 +113,19 @@ const LoanForm = () => {
                     </div>
                 )
             }
+        }
+        try {
+            var stat = Imo[0].Status
+        }
+        catch{
+
+        }
+        if (stat === "Pending" || stat === "Rejected") {
+            return (
+                <div className="core-error text-center">
+                    Your application is not approved..
+                </div>
+            )
         }
         return (
             <div>
