@@ -15,7 +15,8 @@ class LoanVerifyInfo extends Component {
             CreditScore: "",
             LoanIntrest: "",
             InstallmentDetails: "",
-            FormReason: ""
+            FormReason: "",
+            PayableInstallment: ""
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -38,7 +39,7 @@ class LoanVerifyInfo extends Component {
     }
 
     render() {
-        const { items, SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails, FormReason } = this.state;
+        const { items, SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails, FormReason, PayableInstallment } = this.state;
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -59,14 +60,14 @@ class LoanVerifyInfo extends Component {
                 }
             }
             const onApprove = (event) => {
-                if (!SanctionedAmount || !DateofReturn || !CreditScore || !LoanIntrest || !InstallmentDetails) {
+                if (!SanctionedAmount || !DateofReturn || !CreditScore || !LoanIntrest || !InstallmentDetails || !PayableInstallment) {
                     return (
                         alert("Please fill complete information")
                     )
                 }
                 else {
                     event.preventDefault();
-                    LoanApprove({ SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails }, items._id)
+                    LoanApprove({ SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails, PayableInstallment }, items._id)
                         .then((data) => {
                             if (data.error) {
                                 console.log(data.error);
@@ -147,19 +148,19 @@ class LoanVerifyInfo extends Component {
                                 </div>
                                 <img src={`${API}/loanForm/getPassbook/${items._id}`} alt="aadhar" className="loan-photos" />
                             </div>
-                            <div className="col-sm-12 col-md-6 decision-padding">
+                            <div className="col-sm-12 col-md-6 decision-padding text-center">
                                 <div className="command-text text-center">Loan Rejection</div>
                                 Rejection Reason:
                                 <br />
-                                <input className="reason-input" placeholder="Enter Rejection Reason" onChange={(e) => this.handleChange(e, 'FormReason')}></input>
+                                <textarea className="reason-textarea" placeholder="Enter Rejection Reason" onChange={(e) => this.handleChange(e, 'FormReason')}></textarea>
                                 <br /><br />
                                 <div className="text-center">
                                     <button className="reject-btn" onClick={onReject}>Reject!</button>
                                 </div>
                             </div>
-                            <div className="col-sm-12 col-md-6 decision-padding1">
+                            <div className="col-sm-12 col-md-6 decision-padding1 text-center">
                                 <div className="command-text text-center">Loan Approval</div>
-                                Totla Sanctioned Amount:
+                                Total Sanctioned Amount:
                                 <br />
                                 <input className="reason-input" placeholder="Enter Total Sanctioned amount" onChange={(e) => this.handleChange(e, 'SanctionedAmount')}></input>
                                 <br /><br />
@@ -173,7 +174,10 @@ class LoanVerifyInfo extends Component {
                                 <input className="reason-input" placeholder="Loan Intrest" onChange={(e) => this.handleChange(e, 'LoanIntrest')}></input>
                                 <br /><br />
                                 Installment Details: <br />
-                                <input className="reason-input" placeholder="Installment values with comma" onChange={(e) => this.handleChange(e, 'InstallmentDetails')}></input>
+                                <input className="reason-input" placeholder="Installment details with comma" onChange={(e) => this.handleChange(e, 'InstallmentDetails')}></input>
+                                <br /><br />
+                                Installment amount to be paid: <br />
+                                <input className="reason-input" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'PayableInstallment')}></input>
                                 <br /><br />
                                 <div className="text-center">
                                     <button onClick={onApprove} className="approve-btn">Approve !</button>

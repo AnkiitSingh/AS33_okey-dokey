@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import Menu from "../components/menu";
 import { API } from '../Api';
-import { repayReq, cancelReq } from "../helper/ImoHelper"
-class ImoLoanInfo extends Component {
+import PaymentApprove from "../helper/approvePayment";
+
+class LoanPaymentInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            PaidAmount: Number,
+            TranId: ""
         };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event, name) {
+        this.setState({ [name]: event.target.value });
     }
     componentDidMount() {
         const local = localStorage.getItem("jwt");
         const user = JSON.parse(local);
         var url = this.props.match.params.id;
         if (localStorage.getItem("jwt") !== null) {
-            if (user.user.role === 1) {
+            if (user.user.role === 3) {
                 fetch(` ${API}/loanForm/info/${url}`)
                     .then(res => res.json())
                     .then(res => this.setState({ items: res, isLoaded: true }))
@@ -25,9 +32,9 @@ class ImoLoanInfo extends Component {
         }
         this.setState({ isLoaded: true })
     }
+
     render() {
-        const { items } = this.state;
-        console.log(items)
+        const { items, PaidAmount, TranId } = this.state;
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -39,7 +46,7 @@ class ImoLoanInfo extends Component {
                 )
             }
             if (localStorage.getItem("jwt") !== null) {
-                if (user.user.role !== 1) {
+                if (user.user.role !== 3) {
                     return (
                         <div className="core-error text-center">
                             You are not Authorized
@@ -48,32 +55,25 @@ class ImoLoanInfo extends Component {
                 }
             }
             const onApprove = (event) => {
-                event.preventDefault();
-                repayReq(items._id)
-                    .then((data) => {
-                        if (data.error) {
+                if (!PaidAmount || !TranId) {
+                    return (
+                        alert("Please fill complete information")
+                    )
+                }
+                else {
+                    event.preventDefault();
+                    PaymentApprove({ PaidAmount, TranId }, items._id)
+                        .then((data) => {
+                            if (data.error) {
+                                console.log(data.error);
+                            }
+                        })
+                        .then(() => alert("Payment Complete"))
+                        .then(() => { window.location.reload(false); })
+                        .catch((data) => {
                             console.log(data.error);
-                        }
-                    })
-                    .then(() => alert("repayment requested"))
-                    .then(() => { window.location.reload(false); })
-                    .catch((data) => {
-                        console.log(data.error);
-                    });
-            };
-            const onReject = (event) => {
-                event.preventDefault();
-                cancelReq(items._id)
-                    .then((data) => {
-                        if (data.error) {
-                            console.log(data.error);
-                        }
-                    })
-                    .then(() => alert("Loan request cancelled"))
-                    .then(() => { window.location.reload(false); })
-                    .catch((data) => {
-                        console.log(data.error);
-                    });
+                        });
+                }
             };
             return (
                 <div className="IMO-page">
@@ -110,16 +110,21 @@ class ImoLoanInfo extends Component {
                                 Repayment Status: <span className="key-value">{items.RepaymentReason}</span><br />
                                 TransactionId: <span className="key-value">{items.TransactionId}</span><br />
                             </div>
-                            <div className="col-sm-12 col-md-6 decision-padding text-center">
-                                <div className="command-text text-center">Cancel Request</div>
-                                <div className="text-center">
-                                    <button className="reject-btn" onClick={onReject}>Cancle!</button>
-                                </div>
+                            <div className="col-sm-12 text-center payable-pad">
+                                <h4>Payable Amonut - {items.PayableInstallment}</h4>
                             </div>
-                            <div className="col-sm-12 col-md-6 decision-padding1 text-center">
-                                <div className="command-text text-center">Request Repayment</div>
+
+                            <div className="col-sm-12 col-md-12 decision-padding2 text-center">
+                                <div className="command-text text-center">Loan Payment Details</div>
+                                Paid Amount:
+                                <br />
+                                <input type="number" className="reason-input1" placeholder="Enter Paid Amount" onChange={(e) => this.handleChange(e, 'PaidAmount')}></input>
+                                <br /><br />
+                                Transaction Id: <br />
+                                <input className="reason-input1" placeholder="Enter Transaction Id" onChange={(e) => this.handleChange(e, 'TranId')}></input>
+                                <br /><br />
                                 <div className="text-center">
-                                    <button onClick={onApprove} className="approve-btn">Request!</button>
+                                    <button onClick={onApprove} className="approve-btn">Done !</button>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +137,7 @@ class ImoLoanInfo extends Component {
                 <Menu />
                 <div className="core-page-pad">
                     <div className="core-title">
-                        Loan Info
+                        Payment Req.
                     </div>
                     <div >
                         {logCheck()}
@@ -143,4 +148,4 @@ class ImoLoanInfo extends Component {
     }
 }
 
-export default ImoLoanInfo;
+export default LoanPaymentInfo;

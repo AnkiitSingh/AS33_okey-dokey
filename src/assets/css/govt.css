@@ -40,7 +40,7 @@
 }
 .reason-input{
     height: 5vh;
-    width: 100%;
+    width: 70%;
     border-radius: 1vh;
     border: 1px solid
 }
@@ -49,4 +49,28 @@
     font-size: 3vh;
 
     padding-bottom: 3vh;
+}
+.decision-padding2{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top:1px solid ;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+.reason-input1{
+    height: 5vh;
+    width: 40%;
+    border-radius: 1vh;
+    border: 1px solid
+}
+.payable-pad{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-top: 1px solid;
+}
+.reason-textarea{
+    height: 20vh;
+    width: 80%;
+    border-radius: 1vh;
+    border: 1px solid
 }

@@ -1,9 +1,10 @@
 .background{
-    background-image: url("../logo/bg.jpg");
+    background-image: url("../logo/bg3.jpg");
     height: 80vh;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 .back-color{
     background-color: rgba(8, 7, 7, 0.6);

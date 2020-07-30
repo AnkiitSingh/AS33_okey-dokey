@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Menu from "../components/menu";
 import { API } from '../Api';
+import { repayApprove, repayReject } from "../helper/repaymentHelper";
 
 class LoanRepayInfo extends Component {
     constructor(props) {
@@ -8,8 +9,14 @@ class LoanRepayInfo extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            payableAmt: Number,
+            RepaymentReason: ""
         };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event, name) {
+        this.setState({ [name]: event.target.value });
     }
     componentDidMount() {
         const local = localStorage.getItem("jwt");
@@ -26,7 +33,7 @@ class LoanRepayInfo extends Component {
         this.setState({ isLoaded: true })
     }
     render() {
-        const { items } = this.state;
+        const { items, payableAmt, RepaymentReason } = this.state;
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -46,6 +53,48 @@ class LoanRepayInfo extends Component {
                     )
                 }
             }
+            const onApprove = (event) => {
+                if (!payableAmt) {
+                    return (
+                        alert("Please fill complete information")
+                    )
+                }
+                else {
+                    event.preventDefault();
+                    repayApprove({ payableAmt }, items._id)
+                        .then((data) => {
+                            if (data.error) {
+                                console.log(data.error);
+                            }
+                        })
+                        .then(() => alert("Loan Approved"))
+                        .then(() => { window.location.reload(false); })
+                        .catch((data) => {
+                            console.log(data.error);
+                        });
+                }
+            };
+            const onReject = (event) => {
+                if (!RepaymentReason) {
+                    return (
+                        alert("Please enter reason to reject form")
+                    )
+                }
+                else {
+                    event.preventDefault();
+                    repayReject({ RepaymentReason }, items._id)
+                        .then((data) => {
+                            if (data.error) {
+                                console.log(data.error);
+                            }
+                        })
+                        .then(() => alert("Loan Form Rejected"))
+                        .then(() => { window.location.reload(false); })
+                        .catch((data) => {
+                            console.log(data.error);
+                        });
+                }
+            };
             return (
                 <div className="IMO-page">
                     <div className="loan-info-heading text-center">
@@ -92,6 +141,25 @@ class LoanRepayInfo extends Component {
                                     Bank Statement
                                 </div>
                                 <img src={`${API}/loanForm/getPassbook/${items._id}`} alt="aadhar" className="loan-photos" />
+                            </div>
+                            <div className="col-sm-12 col-md-6 decision-padding text-center">
+                                <div className="command-text text-center">Loan Rejection</div>
+                                Rejection Reason:
+                                <br />
+                                <textarea className="reason-textarea" placeholder="Enter Rejection Reason" onChange={(e) => this.handleChange(e, 'RepaymentReason')}></textarea>
+                                <br /><br />
+                                <div className="text-center">
+                                    <button className="reject-btn" onClick={onReject}>Reject!</button>
+                                </div>
+                            </div>
+                            <div className="col-sm-12 col-md-6 decision-padding1 text-center">
+                                <div className="command-text text-center">Loan Approval</div>
+                                Installment amount to be paid: <br />
+                                <input className="reason-input" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'payableAmt')}></input>
+                                <br /><br />
+                                <div className="text-center">
+                                    <button onClick={onApprove} className="approve-btn">Approve !</button>
+                                </div>
                             </div>
                         </div>
                     </div>
