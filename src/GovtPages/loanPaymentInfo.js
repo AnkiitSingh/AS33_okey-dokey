@@ -111,7 +111,7 @@ class LoanPaymentInfo extends Component {
                                 TransactionId: <span className="key-value">{JSON.stringify(items.TransactionId)}</span><br />
                             </div>
                             <div className="col-sm-12 text-center payable-pad">
-                                <h4>Payable Amonut - {items.PayableInstallment}</h4>
+                                <h4>Payable Amount - {items.PayableInstallment}</h4>
                             </div>
 
                             <div className="col-sm-12 col-md-12 decision-padding2 text-center">

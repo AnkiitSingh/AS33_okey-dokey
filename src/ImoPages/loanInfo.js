@@ -108,7 +108,7 @@ class ImoLoanInfo extends Component {
                                 Form Current Status: <span className="key-value">{items.FormReason}</span><br />
                                 Repayment: <span className="key-value">{items.Repayment}</span><br />
                                 Repayment Status: <span className="key-value">{items.RepaymentReason}</span><br />
-                                TransactionId: <span className="key-value">{items.TransactionId}</span><br />
+                                TransactionId: <span className="key-value">{JSON.stringify(items.TransactionId)}</span><br />
                             </div>
                             <div className="col-sm-12 col-md-6 decision-padding text-center">
                                 <div className="command-text text-center">Cancel Request</div>
