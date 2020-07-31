@@ -16,7 +16,7 @@
     font-size: 2.5vh;
     background-color:#10274c ;
     color: white;
-    width: 25vh;
+    width: 30vh;
     text-align: center;
     border-bottom:1px solid #898b8e;
 }
@@ -125,4 +125,64 @@
     height: 5vh;
     width: 20vh;
     border-radius: 1vh;
+}
+.serach-head{
+    letter-spacing: 2px;
+    font-size: 2.5vh;
+    padding-top: 1vh;
+}
+.search-content{
+    padding-top: 5vh;
+}
+.search-bar{
+    height: 6vh;
+    width: 50vh;
+    border-radius: 1vh;
+    border: 1px solid #a5a5a5;
+    letter-spacing: 1px;
+    font-size: 2vh;
+    text-align: center;
+}
+.search-btn{
+    height: 5vh;
+    width: 20vh;
+    border-radius: 1vh;
+    border:0px;
+    color:white;
+    background-color: #0055a9;
+    letter-spacing: 1px;
+    font-size: 2vh;
+}
+.goi-logo{
+    height: 10vh;
+    background-color:#0055a9;
+    border-radius: 10vh;
+}
+.fill-form{
+    letter-spacing: 2px;
+    font-size: 3.5vh;
+    padding-top: 5vh;
+}
+.search-data{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    border-radius: 2vh;
+    background-color: white;
+    padding-left: 2vh;
+}
+.search-head{
+    letter-spacing: 2px;
+    font-size: 2.8vh;
+    color: green;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+.search-values{
+    padding-top: 3vh;
+    padding-left: 2vh;
+    font-size: 2.3vh;
+    letter-spacing: 1px;
+    border-right: 1px solid #a5a5a5;
+    padding-bottom: 3vh;
 }

@@ -35,7 +35,7 @@ const LoanForm = () => {
         formData: ""
     });
     const [Imo, setImo] = useState({});
-    const [hasError, setErrors] = useState(false);
+    const [hasError, setErrors] = useState(false);// eslint-disable-line 
 
     async function fetchData() {
         if (localStorage.getItem("jwt") !== null) {
@@ -55,7 +55,7 @@ const LoanForm = () => {
     useEffect(() => {
         fetchData();
         preload();
-    }, []);
+    }, []);//eslint-disable-line
 
     const handleChange = name => event => {
         const value = name === "AadharPhoto" || name === "BankPassbook" ? event.target.files[0] : event.target.value;

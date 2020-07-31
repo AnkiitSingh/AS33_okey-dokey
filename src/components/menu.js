@@ -16,6 +16,7 @@ import list from "../assets/logo/list.png";
 import record from "../assets/logo/records.png";
 import repayment from "../assets/logo/repayment.png";
 import money from "../assets/logo/money.png";
+import search from "../assets/logo/search.png";
 
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
@@ -183,6 +184,16 @@ const Menu = ({ history }) => {
                     </a>
                 </span>
                 {MenuChecker()}
+                <span className="menu-btn-pad" >
+                    <a href="/search">
+                        <button className="menu-btn" style={currentTab(history, "/search")}>
+                            <div>
+                                <img src={search} alt="home" className="menu-btn-logo" />
+                            </div>
+                            <div className="menu-btn-text">Search</div>
+                        </button>
+                    </a>
+                </span>
                 <span className="menu-btn-pad" >
                     <a href="/help">
                         <button className="menu-btn" style={currentTab(history, "/help")}>
