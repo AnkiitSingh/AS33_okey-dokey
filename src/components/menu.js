@@ -131,7 +131,7 @@ const Menu = ({ history }) => {
                                 <div>
                                     <img src={money} alt="home" className="menu-btn-logo" />
                                 </div>
-                                <div className="menu-btn-text">Repayment</div>
+                                <div className="menu-btn-text">Payment</div>
                             </button>
                         </a>
                     </span>

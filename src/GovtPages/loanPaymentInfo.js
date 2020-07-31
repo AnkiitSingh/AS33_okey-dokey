@@ -108,7 +108,7 @@ class LoanPaymentInfo extends Component {
                                 Form Current Status: <span className="key-value">{items.FormReason}</span><br />
                                 Repayment: <span className="key-value">{items.Repayment}</span><br />
                                 Repayment Status: <span className="key-value">{items.RepaymentReason}</span><br />
-                                TransactionId: <span className="key-value">{items.TransactionId}</span><br />
+                                TransactionId: <span className="key-value">{JSON.stringify(items.TransactionId)}</span><br />
                             </div>
                             <div className="col-sm-12 text-center payable-pad">
                                 <h4>Payable Amonut - {items.PayableInstallment}</h4>

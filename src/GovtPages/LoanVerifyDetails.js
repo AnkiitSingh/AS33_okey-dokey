@@ -40,6 +40,7 @@ class LoanVerifyInfo extends Component {
 
     render() {
         const { items, SanctionedAmount, DateofReturn, CreditScore, LoanIntrest, InstallmentDetails, FormReason, PayableInstallment } = this.state;
+        var ide = items._id
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -101,6 +102,28 @@ class LoanVerifyInfo extends Component {
                         });
                 }
             };
+            const aadhar = () => {
+                if (ide === undefined) {
+                    return (
+                        <div>
+                        </div>
+                    )
+                }
+                return (
+                    <img src={`${API}/loanForm/getAadhar/${ide}`} alt="aadhar" className="loan-photos" />
+                )
+            }
+            const bankStat = () => {
+                if (ide === undefined) {
+                    return (
+                        <div>
+                        </div>
+                    )
+                }
+                return (
+                    <img src={`${API}/loanForm/getPassbook/${ide}`} alt="aadhar" className="loan-photos" />
+                )
+            }
             return (
                 <div className="IMO-page">
                     <div className="loan-info-heading text-center">
@@ -140,13 +163,13 @@ class LoanVerifyInfo extends Component {
                                 <div className="loan-photo-text">
                                     Aadhar Card
                                 </div>
-                                <img src={`${API}/loanForm/getAadhar/${items._id}`} alt="aadhar" className="loan-photos" />
+                                {aadhar()}
                             </div>
                             <div className="col-sm-12 col-md-6 loan-info-seperate text-center">
                                 <div className="loan-photo-text">
                                     Bank Statement
                                 </div>
-                                <img src={`${API}/loanForm/getPassbook/${items._id}`} alt="aadhar" className="loan-photos" />
+                                {bankStat()}
                             </div>
                             <div className="col-sm-12 col-md-6 decision-padding text-center">
                                 <div className="command-text text-center">Loan Rejection</div>
