@@ -28,4 +28,19 @@ const ImoReject = (data, id) => {
         })
         .catch(err => console.log(err));
 };
-export { ImoApprove, ImoReject };
+
+const ImoBlackList = (id) => {
+    return fetch(`${API}/getNgo/blackList/${id}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export { ImoApprove, ImoReject, ImoBlackList };

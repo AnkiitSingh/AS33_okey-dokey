@@ -17,6 +17,7 @@ import record from "../assets/logo/records.png";
 import repayment from "../assets/logo/repayment.png";
 import money from "../assets/logo/money.png";
 import search from "../assets/logo/search.png";
+import verify from "../assets/logo/verify.png";
 
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
@@ -136,18 +137,8 @@ const Menu = ({ history }) => {
                         </a>
                     </span>
                     <span className="menu-btn-pad" >
-                        <a href="/profile">
-                            <button className="menu-btn" style={currentTab(history, "/profile")}>
-                                <div>
-                                    <img src={list} alt="home" className="menu-btn-logo" />
-                                </div>
-                                <div className="menu-btn-text">IMO List</div>
-                            </button>
-                        </a>
-                    </span>
-                    <span className="menu-btn-pad" >
-                        <a href="/profile">
-                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                        <a href="/Imo/Records">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/Records")}>
                                 <div>
                                     <img src={record} alt="home" className="menu-btn-logo" />
                                 </div>
@@ -156,12 +147,22 @@ const Menu = ({ history }) => {
                         </a>
                     </span>
                     <span className="menu-btn-pad" >
-                        <a href="/profile">
-                            <button className="menu-btn" style={currentTab(history, "/profile")}>
+                        <a href="/Imo/List">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/List")}>
                                 <div>
-                                    <img src={dashboard} alt="home" className="menu-btn-logo" />
+                                    <img src={list} alt="home" className="menu-btn-logo" />
                                 </div>
-                                <div className="menu-btn-text">Dashboard</div>
+                                <div className="menu-btn-text">IMO Info..</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/Imo/Dashboard">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/Dashboard")}>
+                                <div>
+                                    <img src={verify} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Verify Doc</div>
                             </button>
                         </a>
                     </span>
