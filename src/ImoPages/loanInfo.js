@@ -113,7 +113,7 @@ class ImoLoanInfo extends Component {
                             <div className="col-sm-12 col-md-6 decision-padding text-center">
                                 <div className="command-text text-center">Cancel Request</div>
                                 <div className="text-center">
-                                    <button className="reject-btn" onClick={onReject}>Cancle!</button>
+                                    <button className="reject-btn" onClick={onReject}>Cancel!</button>
                                 </div>
                             </div>
                             <div className="col-sm-12 col-md-6 decision-padding1 text-center">
