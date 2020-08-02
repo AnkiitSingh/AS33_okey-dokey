@@ -39,6 +39,7 @@
     padding-left: 15%;
     padding-right: 15%;
     padding-bottom: 5vh;
+    text-align: left;
 }
 .home-pad{
     padding-left: 2vh;
@@ -57,6 +58,9 @@
     border-radius: 1vh;
     color:white;
     height: 5vh;
+}
+.home-btn2:hover{
+  background-color: rgba(103, 178, 240,0.9);
 }
 .home-cover-png{
     height: 40vh;
