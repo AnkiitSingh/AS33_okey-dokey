@@ -178,7 +178,7 @@ class LoanRepayInfo extends Component {
                             <div className="col-sm-12 col-md-6 decision-padding1 text-center">
                                 <div className="command-text text-center">Loan Approval</div>
                                 Installment amount to be paid: <br />
-                                <input className="reason-input" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'payableAmt')}></input>
+                                <input type="Number" className="reason-input" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'payableAmt')}></input>
                                 <br /><br />
                                 <div className="text-center">
                                     <button onClick={onApprove} className="approve-btn">Approve !</button>

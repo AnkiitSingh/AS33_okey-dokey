@@ -185,22 +185,22 @@ class LoanVerifyInfo extends Component {
                                 <div className="command-text text-center">Loan Approval</div>
                                 Total Sanctioned Amount:
                                 <br />
-                                <input className="reason-input" placeholder="Enter Total Sanctioned amount" onChange={(e) => this.handleChange(e, 'SanctionedAmount')}></input>
+                                <input type="Number" className="reason-input text-center" placeholder="Enter Total Sanctioned amount" onChange={(e) => this.handleChange(e, 'SanctionedAmount')}></input>
                                 <br /><br />
                                 Loan Return date: <br />
-                                <input className="reason-input" placeholder="Loan Return Date" onChange={(e) => this.handleChange(e, 'DateofReturn')}></input>
+                                <input type="Date" className="reason-input" placeholder="Loan Return Date" onChange={(e) => this.handleChange(e, 'DateofReturn')}></input>
                                 <br /><br />
                                 Enter Credit Sore: <br />
-                                <input className="reason-input" placeholder="Credit Score" onChange={(e) => this.handleChange(e, 'CreditScore')}></input>
+                                <input type="Number" className="reason-input text-center" placeholder="Credit Score" onChange={(e) => this.handleChange(e, 'CreditScore')}></input>
                                 <br /><br />
-                                Loan Intrest: <br />
-                                <input className="reason-input" placeholder="Loan Intrest" onChange={(e) => this.handleChange(e, 'LoanIntrest')}></input>
+                                Loan Intrest percentage: <br />
+                                <input type="Number" className="reason-input text-center" placeholder="Loan Intrest" onChange={(e) => this.handleChange(e, 'LoanIntrest')}></input>
                                 <br /><br />
                                 Installment Details: <br />
-                                <input className="reason-input" placeholder="Installment details with comma" onChange={(e) => this.handleChange(e, 'InstallmentDetails')}></input>
+                                <input className="reason-input text-center" placeholder="Installment details with comma" onChange={(e) => this.handleChange(e, 'InstallmentDetails')}></input>
                                 <br /><br />
                                 Installment amount to be paid: <br />
-                                <input className="reason-input" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'PayableInstallment')}></input>
+                                <input type="Number" className="reason-input text-center" placeholder="Payable Installment Amount" onChange={(e) => this.handleChange(e, 'PayableInstallment')}></input>
                                 <br /><br />
                                 <div className="text-center">
                                     <button onClick={onApprove} className="approve-btn">Approve !</button>

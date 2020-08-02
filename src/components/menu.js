@@ -122,7 +122,7 @@ const Menu = ({ history }) => {
                                 <div>
                                     <img src={repayment} alt="home" className="menu-btn-logo" />
                                 </div>
-                                <div className="menu-btn-text">Repayment</div>
+                                <div className="menu-btn-text">Installment</div>
                             </button>
                         </a>
                     </span>
