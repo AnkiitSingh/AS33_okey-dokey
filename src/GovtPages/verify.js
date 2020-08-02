@@ -51,7 +51,52 @@ class Verify extends Component {
             }
             if (data.length === 0) {
                 return (
-                    <div className="text-center fill-form">Fill the IMO Aadhar no. to get details !</div>
+                    <div className="text-center fill-form">Fill the Aadhar no. to get details !</div>
+                )
+            }
+            return (
+                <div className="search-data">
+                    <div className="row">
+                        <div className="search-head text-center col-12">Records</div>
+                        <div className="col-md-12 col-lg-6 search-values">
+                            Name : {data[0].name}
+                            <br />
+                            NgoId : {data[0].NgoId}
+                            <br />
+                            Registration No : {data[0].NgoRegNo}
+                            <br />
+                            Ngo Head: {data[0].NgoHead}
+                            <br />
+                            Id: &nbsp; &nbsp;{data[0]._id}
+                            <br />
+                        </div>
+                        <div className="col-sm-12 col-md-6 search-values">
+                            Ngo Sector: {data[0].NgoSector}
+                            <br />
+                            Email : {data[0].email}
+                            <br />
+                            Status Reason: {data[0].formReason}
+                            <br />
+                            Status:{data[0].Status}
+                            <br />
+                        </div>
+                        <div className="col-sm-12 text-center">
+                            <br />
+                            <button onClick={onBlacklist} className="reject-btn">Blacklist</button>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        const checker2 = () => {
+            if (check === true && data.message) {
+                return (
+                    <div className="text-center fill-form">Imo details not found</div>
+                )
+            }
+            if (data.length === 0) {
+                return (
+                    <div className="text-center fill-form">Fill the Imo Id to get details !</div>
                 )
             }
             return (
@@ -99,15 +144,32 @@ class Verify extends Component {
                         <div className="text-center">
                             <img src={GOI} alt="logo" className="goi-logo"></img>
                         </div>
-                        <div className="serach-head text-center">
-                            Search Aadhar
+                        <div className="row">
+                            <div className="col-md-12 col-lg-6">
+                                <div className="serach-head text-center">
+                                    Search Aadhar
                         </div>
-                        <div className="search-content text-center">
-                            <input onChange={handleChange("find")} className="search-bar" placeholder="Enter Aadhar No."></input>
-                            <br /><br />
-                            <button onClick={finder} className="search-btn">Search!</button>
+                                <div className="search-content text-center">
+                                    <input onChange={handleChange("find")} className="search-bar" placeholder="Enter Aadhar No."></input>
+                                    <br /><br />
+                                    <button onClick={finder} className="search-btn">Search!</button>
+                                </div>
+                                {checker()}
+                            </div>
+                            <div className="col-md-12 col-lg-6">
+                                <div className="serach-head text-center">
+                                    Search Imo
                         </div>
-                        {checker()}
+                                <div className="search-content text-center">
+                                    <input onChange={handleChange("find")} className="search-bar" placeholder="Enter Aadhar No."></input>
+                                    <br /><br />
+                                    <button onClick={finder} className="search-btn">Search!</button>
+                                </div>
+                                {checker2()}
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
