@@ -6,7 +6,14 @@ const Help = () => {
         <div>
             <Menu />
             <br />
-            This is the Help page
+            <div className="text-center">
+                This is the Help page..
+                <br />
+                <br />
+                <h2>
+                    Work in progress
+                </h2>
+            </div>
         </div>
     )
 }
