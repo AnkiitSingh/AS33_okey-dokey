@@ -43,30 +43,45 @@ const Form = () => {
 
     const onSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, error: "", loading: true });
-        createNgo(formData).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                console.log(formData)
-                alert("Form Successfully Filled")
-                setValues({
-                    ...values,
-                    success: true,
-                    name: "",
-                    email: "",
-                    password: "",
-                    NgoId: "",
-                    NgoRegNo: "",
-                    NgoRegCertificate: "",
-                    AadharPhoto: "",
-                    NgoHead: "",
-                    NgoSector: "",
-                    error: "",
-                    formData: ""
-                });
-            }
-        });
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email) !== true) { // eslint-disable-line 
+            alert("You have entered an invalid email address!")
+        }
+        else if (passwordLength <= 10 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.password) !== true) { // eslint-disable-line 
+            alert("Password must contain @ symbol and must have at least 10 digits")
+        }
+        else if (IdLength <= 8) {
+            alert("Enter a valid IMO id")
+        }
+        else if (phoneLength === 10) {
+            setValues({ ...values, error: "", loading: true });
+            createNgo(formData).then(data => {
+                if (data.error) {
+                    setValues({ ...values, error: data.error });
+                }
+                else {
+                    console.log(formData)
+                    alert("Form Successfully Filled")
+                    setValues({
+                        ...values,
+                        success: true,
+                        name: "",
+                        email: "",
+                        password: "",
+                        NgoId: "",
+                        NgoRegNo: "",
+                        NgoRegCertificate: "",
+                        AadharPhoto: "",
+                        NgoHead: "",
+                        NgoSector: "",
+                        error: "",
+                        formData: ""
+                    });
+                }
+            });
+        }
+        else {
+            alert("Please enter valid Phone No")
+        }
     };
     const errorMessage = () => {
         if (error === "" || error === false) {
@@ -86,6 +101,25 @@ const Form = () => {
                     </h4>
                 </div>
             )
+    }
+    var phoneLength = 0
+    var passwordLength = 0
+    var IdLength = 0
+    try {
+        phoneLength = values.phoneNo.length
+    }
+    catch{
+    }
+    try {
+        passwordLength = values.password.length
+    }
+    catch{
+    }
+    try {
+        IdLength = values.NgoId.length
+    }
+    catch{
+
     }
     return (
         <div>

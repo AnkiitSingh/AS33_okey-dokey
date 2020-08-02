@@ -33,7 +33,7 @@ const LoanForm = () => {
         phoneNo: "",
         error: "",
         success: false,
-        formData: ""
+        formData: "",
     });
     const [Imo, setImo] = useState({});
     const [hasError, setErrors] = useState(false);// eslint-disable-line 
@@ -85,19 +85,50 @@ const LoanForm = () => {
     }
     const onSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, error: "", loading: true });
-        createLoan(formData).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                alert("Form Successfully Filled")
-                setValues({
-                    ...values,
-                    success: true,
-                });
-            }
-        });
+        if (phoneLength < 10) {
+            alert("Please enter a valid Phone No")
+        }
+        else if (LoanAcc < 15) {
+            alert("Please enter a valid account No")
+        }
+        else if (IFSC < 8) {
+            alert("Please enter a valid ifsc code")
+        }
+        else {
+            setValues({ ...values, error: "", loading: true });
+            createLoan(formData).then(data => {
+                if (data.error) {
+                    setValues({ ...values, error: data.error });
+                } else {
+                    alert("Form Successfully Filled")
+                    setValues({
+                        ...values,
+                        success: true,
+                    });
+                }
+            });
+        }
     };
+    var phoneLength = 0
+    var LoanAcc = 0
+    var IFSC = 0
+    try {
+        phoneLength = values.phoneNo.length
+    }
+    catch{
+    }
+    try {
+        LoanAcc = values.LoanAccount.length
+    }
+    catch{
+    }
+    try {
+        IFSC = values.AccountIFSC.length
+    }
+    catch{
+
+    }
+
     const logCheck = () => {
         if (localStorage.getItem("jwt") === null) {
             return (
@@ -119,7 +150,6 @@ const LoanForm = () => {
             var stat = Imo[0].Status
         }
         catch{
-
         }
         if (stat === "Pending" || stat === "Rejected") {
             return (
@@ -299,6 +329,7 @@ const LoanForm = () => {
                     Loan Form
                 </div>
                 {logCheck()}
+                {JSON.stringify(values.Religion)}
             </div>
         </div>
     )
