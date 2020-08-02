@@ -30,6 +30,7 @@ const LoanForm = () => {
         Caste: "",
         Religion: "",
         LiteracyLevel: "",
+        phoneNo: "",
         error: "",
         success: false,
         formData: ""
@@ -183,31 +184,58 @@ const LoanForm = () => {
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Requested Amount<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Requested Amount" onChange={handleChange("RequestedAmount")} />
+                                    <Form.Control type="Number" placeholder="Requested Amount" onChange={handleChange("RequestedAmount")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Income Level<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Income level" onChange={handleChange("IncomeLevel")} />
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" onChange={handleChange("IncomeLevel")} >
+                                            <option selected>Choose...</option>
+                                            <option value="Student">APL</option>
+                                            <option value="Farming">BPL</option>
+                                        </select>
+                                    </div>
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Economic Activity<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Economic activity" onChange={handleChange("EconomicActivity")} />
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" onChange={handleChange("EconomicActivity")} >
+                                            <option selected>Choose...</option>
+                                            <option value="Student">Student</option>
+                                            <option value="Farming">Farming</option>
+                                            <option value="Teacher">Teacher</option>
+                                            <option value="Business">Business</option>
+                                            <option value="Govt Job">Govt Job.</option>
+                                            <option value="Private Job">Private Job.</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
                                 </Form.Group>
                             </Form>
                         </div>
                         <div className="col-md-12 col-lg-4">
                             <Form className="laon-field-padding1">
                                 <Form.Group >
+                                    <Form.Label>Phone No.<span className="text-danger">* ( Given on aadhar card )</span></Form.Label>
+                                    <Form.Control type="Number" placeholder="Phone No (Don't add +91)" onChange={handleChange("phoneNo")} />
+                                </Form.Group>
+                                <Form.Group >
                                     <Form.Label>Age<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearer Age." onChange={handleChange("Age")} />
+                                    <Form.Control type="Number" placeholder="Bearer Age." onChange={handleChange("Age")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Savings<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearer Savings" onChange={handleChange("Saving")} />
+                                    <Form.Control type="Number" placeholder="Bearer Savings" onChange={handleChange("Saving")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Family Strength<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Totla no of family members" onChange={handleChange("FamilyStrength")} />
+                                    <Form.Control type="Number" placeholder="Totla no of family members" onChange={handleChange("FamilyStrength")} />
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Caste<span className="text-danger">*</span></Form.Label>
@@ -215,11 +243,38 @@ const LoanForm = () => {
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Religion<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearers religion" onChange={handleChange("Religion")} />
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" onChange={handleChange("Religion")} >
+                                            <option selected>Choose...</option>
+                                            <option value="Hindu">Hindu</option>
+                                            <option value="Sikh">Sikh</option>
+                                            <option value="Islam">Islam</option>
+                                            <option value="Cristian">Cristian</option>
+                                            <option value="Jain">Jain</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
                                 </Form.Group>
                                 <Form.Group >
                                     <Form.Label>Literacy Level<span className="text-danger">*</span></Form.Label>
-                                    <Form.Control type="text" placeholder="Bearers literacy level" onChange={handleChange("LiteracyLevel")} />
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" onChange={handleChange("LiteracyLevel")} >
+                                            <option selected>Choose...</option>
+                                            <option value="Illetrate">Illetrate</option>
+                                            <option value="Matriculate">Matriculate</option>
+                                            <option value="12th pass">12th pass</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Graduate">Graduate</option>
+                                            <option value="Post. Graduate">Post. Graduate</option>
+                                            <option value="PHD">PHD</option>
+                                        </select>
+                                    </div>
                                 </Form.Group>
                             </Form>
                             <div className="text-center">

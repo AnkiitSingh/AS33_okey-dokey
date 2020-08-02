@@ -20,6 +20,7 @@ const Form = () => {
         AadharPhoto: "",
         NgoHead: "",
         NgoSector: "",
+        phoneNo: "",
         error: "",
         success: false,
         formData: ""
@@ -47,6 +48,7 @@ const Form = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
+                console.log(formData)
                 alert("Form Successfully Filled")
                 setValues({
                     ...values,
@@ -152,11 +154,18 @@ const Form = () => {
                                             <input type="text" className="form-input" onChange={handleChange("NgoSector")}></input>
                                         </div>
                                         <div className="col-3 form-input-seperator">
+                                            Phone No<span className="text-danger form-danger">*</span>
+                                        </div>
+                                        <div className="col-9 form-input-seperator">
+                                            <input type="text" className="form-input" onChange={handleChange("phoneNo")}></input>
+                                        </div>
+                                        <div className="col-3 form-input-seperator">
                                             IMO Email<span className="text-danger form-danger">*</span>
                                         </div>
                                         <div className="col-9 form-input-seperator">
                                             <input type="text" className="form-input" onChange={handleChange("email")}></input>
-                                        </div><div className="col-3 form-input-seperator">
+                                        </div>
+                                        <div className="col-3 form-input-seperator">
                                             Password<span className="text-danger form-danger">*</span>
                                         </div>
                                         <div className="col-9 form-input-seperator">

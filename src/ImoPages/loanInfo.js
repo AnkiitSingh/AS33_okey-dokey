@@ -87,6 +87,7 @@ class ImoLoanInfo extends Component {
                                 <br />
                                 Account No: <span className="key-value">{items.LoanAccount}</span>
                                 <br />
+                                Id: <span className="key-value">{items._id}</span><br />
                                 Account IFSC: <span className="key-value">{items.AccountIFSC}</span><br />
                                 Account Holder Name: <span className="key-value">{items.AccountName}</span><br />
                                 Requested Amount: <span className="key-value">{items.RequestedAmount}</span><br />
