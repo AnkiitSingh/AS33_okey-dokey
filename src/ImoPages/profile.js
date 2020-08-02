@@ -94,13 +94,18 @@ class Profile extends Component {
                                             </tr>
                                             <tr>
                                                 <td>7</td>
+                                                <td>Registration Id</td>
+                                                <td>{user._id}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
                                                 <td>Aadhar</td>
                                                 <td>
                                                     <img src={`${API}/getNgo/aadhar/${user._id}`} alt="aadhar" className="profile-aadhar" />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>8</td>
+                                                <td>9</td>
                                                 <td>Registration Certificate</td>
                                                 <td>
                                                     <img src={`${API}/getNgo/certificate/${user._id}`} alt="aadhar" className="profile-certificate" />

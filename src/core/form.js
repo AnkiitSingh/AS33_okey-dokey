@@ -157,7 +157,7 @@ const Form = () => {
                                             Phone No<span className="text-danger form-danger">*</span>
                                         </div>
                                         <div className="col-9 form-input-seperator">
-                                            <input type="text" className="form-input" onChange={handleChange("phoneNo")}></input>
+                                            <input type="Number" placeHolder="+91" className="form-input" onChange={handleChange("phoneNo")}></input>
                                         </div>
                                         <div className="col-3 form-input-seperator">
                                             IMO Email<span className="text-danger form-danger">*</span>
