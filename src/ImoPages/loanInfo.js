@@ -130,6 +130,7 @@ class ImoLoanInfo extends Component {
                                 Paid Amount: <span className="key-value">{items.PaidAmount}</span><br />
                                 Credit Score: <span className="key-value">{items.CreditScore}</span><br />
                                 Installment Details: <span className="key-value">{items.InstallmentDetails}</span><br />
+                                Repayed Amount: <span className="key-value">{items.RepayedAmt}</span><br />
                             </div>
                             <div className="col-sm-12 col-md-6 loan-info-border">
                                 Sanctioned Amount: <span className="key-value">{items.SanctionedAmount}</span><br />
@@ -143,6 +144,7 @@ class ImoLoanInfo extends Component {
                                 Repayment: <span className="key-value">{items.Repayment}</span><br />
                                 Repayment Status: <span className="key-value">{items.RepaymentReason}</span><br />
                                 TransactionId: <span className="key-value">{JSON.stringify(items.TransactionId)}</span><br />
+                                Repayed Id: <span className="key-value">{JSON.stringify(items.RepayableId)}</span><br />
                             </div>
                             <div className="col-sm-12 col-md-6 decision-padding text-center">
                                 <div className="command-text text-center">Cancel Request</div>

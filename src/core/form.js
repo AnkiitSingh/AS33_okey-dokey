@@ -49,7 +49,7 @@ const Form = () => {
         else if (passwordLength <= 10 && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.password) !== true) { // eslint-disable-line 
             alert("Password must contain @ symbol and must have at least 10 digits")
         }
-        else if (IdLength <= 8) {
+        else if (IdLength <= 3) {
             alert("Enter a valid IMO id")
         }
         else if (phoneLength === 10) {
