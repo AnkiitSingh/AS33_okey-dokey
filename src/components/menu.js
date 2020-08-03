@@ -158,8 +158,8 @@ const Menu = ({ history }) => {
                         </a>
                     </span>
                     <span className="menu-btn-pad" >
-                        <a href="/Imo/Records">
-                            <button className="menu-btn" style={currentTab(history, "/Imo/Records")}>
+                        <a href="/Repayment/all">
+                            <button className="menu-btn" style={currentTab(history, "/Repayment/all")}>
                                 <div>
                                     <img src={repay1} alt="home" className="menu-btn-logo" />
                                 </div>

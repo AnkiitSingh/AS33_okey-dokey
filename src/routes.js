@@ -22,6 +22,7 @@ import ImoList from "./GovtPages/imoInfo";
 import Verify from "./GovtPages/verify";
 import Repayment from "./GovtPages/repayment";
 import RepaymentInfo from "./GovtPages/repaymentInfo";
+import RepaymentRecord from "./GovtPages/repaymentRecords";
 
 const Routes = () => {
     return (
@@ -42,6 +43,7 @@ const Routes = () => {
                 <Route path="/Imo/Records" exact component={paymentRecords}></Route>
                 <Route path="/Imo/List" exact component={ImoList}></Route>
                 <Route path="/Repayment" exact component={Repayment}></Route>
+                <Route path="/Repayment/all" exact component={RepaymentRecord}></Route>
                 <Route path="/Verify/Documents" exact component={Verify}></Route>
                 <Route path="/Repayment/info/:id" exact component={RepaymentInfo}></Route>
                 <Route path="/Imo/LoanVerify/info/:id" exact component={LoanVerifyInfo}></Route>
