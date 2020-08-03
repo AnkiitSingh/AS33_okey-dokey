@@ -18,7 +18,8 @@ import repayment from "../assets/logo/repayment.png";
 import money from "../assets/logo/money.png";
 import search from "../assets/logo/search.png";
 import verify from "../assets/logo/verify.png";
-
+import repay from "../assets/logo/repay.png";
+import repay1 from "../assets/logo/repay1.png"
 const currentTab = (history, path) => {
     if (history.location.pathname === path) {
         return { "backgroundColor": "#022e54" };
@@ -143,6 +144,26 @@ const Menu = ({ history }) => {
                                     <img src={record} alt="home" className="menu-btn-logo" />
                                 </div>
                                 <div className="menu-btn-text">Records</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/Imo/Records">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/Records")}>
+                                <div>
+                                    <img src={repay} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Repayment</div>
+                            </button>
+                        </a>
+                    </span>
+                    <span className="menu-btn-pad" >
+                        <a href="/Imo/Records">
+                            <button className="menu-btn" style={currentTab(history, "/Imo/Records")}>
+                                <div>
+                                    <img src={repay1} alt="home" className="menu-btn-logo" />
+                                </div>
+                                <div className="menu-btn-text">Repay rec.</div>
                             </button>
                         </a>
                     </span>

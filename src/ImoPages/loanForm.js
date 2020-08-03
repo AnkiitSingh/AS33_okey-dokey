@@ -329,7 +329,6 @@ const LoanForm = () => {
                     Loan Form
                 </div>
                 {logCheck()}
-                {JSON.stringify(values.Religion)}
             </div>
         </div>
     )

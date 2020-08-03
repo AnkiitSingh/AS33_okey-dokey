@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import Menu from "../components/menu";
 import { API } from '../Api';
-import { repayReq, cancelReq } from "../helper/ImoHelper"
+import { repayReq, cancelReq } from "../helper/ImoHelper";
+import { Form } from "react-bootstrap"
+import Repayment from "../helper/repayment"
 class ImoLoanInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            paymentId: "",
+            amount: ""
         };
     }
     componentDidMount() {
@@ -26,8 +30,37 @@ class ImoLoanInfo extends Component {
         this.setState({ isLoaded: true })
     }
     render() {
-        const { items } = this.state;
-        console.log(items)
+        const { items, paymentId, amount } = this.state;
+        const handleChange = (name) => (event) => {
+            this.setState({ error: false, [name]: event.target.value });
+        };
+        const LoanId = items._id;
+        const onSubmit = (event) => {
+            event.preventDefault();
+            if (items.SanctionedAmount === 0) {
+                return alert("Your sanctioned amount is 0")
+            }
+            else if (!paymentId || !amount) {
+                return alert("Please fill the complete information")
+            }
+            this.setState({ error: false });
+            Repayment({ paymentId, amount }, LoanId)
+                .then((data) => {
+                    if (data.error) {
+                        console.log("error")
+                        this.setState({ error: data.error });
+                    } else {
+                        this.setState({
+                            success: true,
+                            email: "",
+                            password: ""
+                        });
+                        alert("Repayment request sent");
+                        window.location.reload(false);
+                    }
+                })
+                .catch(() => { console.log("signin request failed") });
+        };
         const logCheck = () => {
             const local = localStorage.getItem("jwt");
             const user = JSON.parse(local);
@@ -118,9 +151,29 @@ class ImoLoanInfo extends Component {
                                 </div>
                             </div>
                             <div className="col-sm-12 col-md-6 decision-padding1 text-center">
-                                <div className="command-text text-center">Request Repayment</div>
+                                <div className="command-text text-center">Request next installment</div>
                                 <div className="text-center">
                                     <button onClick={onApprove} className="approve-btn">Request!</button>
+                                </div>
+                            </div>
+                            <div className="col-sm-12 text-center">
+                                <div className="Repayment-section">
+                                    Enter Repayment Details
+                                    <div className="repayment-form">
+                                        <Form className="laon-field-padding1">
+                                            <Form.Group >
+                                                <Form.Label>Paid Amount<span className="text-danger">*</span></Form.Label>
+                                                <Form.Control type="Number" placeholder="Enter Paid amount" onChange={handleChange("amount")} />
+                                            </Form.Group>
+                                            <Form.Group >
+                                                <Form.Label>Transaction Id<span className="text-danger">*</span></Form.Label>
+                                                <Form.Control type="string" placeholder="Enter transaction Id" onChange={handleChange("paymentId")} />
+                                            </Form.Group>
+                                        </Form>
+                                        <div className="repay-sub">
+                                            <button className="repay-sub-btn" onClick={onSubmit}>Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

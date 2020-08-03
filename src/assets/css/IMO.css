@@ -163,3 +163,27 @@
 .loan-certificate{
     height: 50vh;
 }
+.Repayment-section{
+    padding-top: 5vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.repayment-form{
+    margin-right: 30%;
+    margin-left: 30%;
+}
+.repay-sub-btn{
+    background-color: #0055a9;
+    color: white;
+    font-size: 2vh;
+    border-radius: 1vh;
+    border: 0px;
+    padding-right: 5vh;
+    padding-left: 5vh;
+    height: 5vh;
+    letter-spacing: 2px;
+}
+.repay-sub{
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+}
