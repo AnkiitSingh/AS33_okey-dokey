@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Menu from "../components/menu";
 import { API } from "../Api";
 import GOI from "../assets/logo/GOI.png";
-import { ImoBlackList } from "../helper/approveNgo";
 
 class Verify extends Component {
     constructor(props) {
@@ -11,6 +10,7 @@ class Verify extends Component {
             error: null,
             isLoaded: false,
             data: [],
+            data1: [],
             find: "",
             check: false
         };
@@ -21,28 +21,16 @@ class Verify extends Component {
         };
         const { find, data, check } = this.state;
         const finder = () => {
-            if (find.length <= 5) {
-                alert("please enter a valid registration no.")
+            if (find.length <= 3) {
+                alert("please enter a valid Aadhar No.")
             }
-            fetch(` ${API}/getNgo/${find}`)
+            fetch(` ${API}/getDumAadhar/${find}`)
                 .then(res => res.json())
                 .then(res => this.setState({ isLoaded: true, data: res, check: true }))
                 .then(res => console.log(data))
                 .catch(() => this.setState({ error: true }));
         }
-        const onBlacklist = (event) => {
-            event.preventDefault();
-            ImoBlackList(data[0]._id)
-                .then((data) => {
-                    if (data.error) {
-                        console.log(data.error);
-                    }
-                })
-                .then(() => alert("IMO Form Blacklisted"))
-                .catch((data) => {
-                    console.log(data.error);
-                });
-        };
+
         const checker = () => {
             if (check === true && data.message) {
                 return (
@@ -55,84 +43,29 @@ class Verify extends Component {
                 )
             }
             return (
-                <div className="search-data">
-                    <div className="row">
-                        <div className="search-head text-center col-12">Records</div>
-                        <div className="col-md-12 col-lg-6 search-values">
-                            Name : {data[0].name}
-                            <br />
-                            NgoId : {data[0].NgoId}
-                            <br />
-                            Registration No : {data[0].NgoRegNo}
-                            <br />
-                            Ngo Head: {data[0].NgoHead}
-                            <br />
+                <div className="search-data text-center">
+
+                    <div className="search-head text-center ">Records</div>
+                    <div className="col-md-12search-values">
+                        Name : {data[0].Name}
+                        <br />
+                            Age : {data[0].Age}
+                        <br />
+                            Address : {data[0].Address}
+                        <br />
+                            Date of birth: {data[0].Dob}
+                        <br />
+                            Sex: {data[0].Sex}
+                        <br />
                             Id: &nbsp; &nbsp;{data[0]._id}
-                            <br />
-                        </div>
-                        <div className="col-sm-12 col-md-6 search-values">
-                            Ngo Sector: {data[0].NgoSector}
-                            <br />
-                            Email : {data[0].email}
-                            <br />
-                            Status Reason: {data[0].formReason}
-                            <br />
-                            Status:{data[0].Status}
-                            <br />
-                        </div>
-                        <div className="col-sm-12 text-center">
-                            <br />
-                            <button onClick={onBlacklist} className="reject-btn">Blacklist</button>
-                        </div>
+                        <br />
                     </div>
+
+
                 </div>
             )
         }
-        const checker2 = () => {
-            if (check === true && data.message) {
-                return (
-                    <div className="text-center fill-form">Imo details not found</div>
-                )
-            }
-            if (data.length === 0) {
-                return (
-                    <div className="text-center fill-form">Fill the Imo Id to get details !</div>
-                )
-            }
-            return (
-                <div className="search-data">
-                    <div className="row">
-                        <div className="search-head text-center col-12">Records</div>
-                        <div className="col-md-12 col-lg-6 search-values">
-                            Name : {data[0].name}
-                            <br />
-                            NgoId : {data[0].NgoId}
-                            <br />
-                            Registration No : {data[0].NgoRegNo}
-                            <br />
-                            Ngo Head: {data[0].NgoHead}
-                            <br />
-                            Id: &nbsp; &nbsp;{data[0]._id}
-                            <br />
-                        </div>
-                        <div className="col-sm-12 col-md-6 search-values">
-                            Ngo Sector: {data[0].NgoSector}
-                            <br />
-                            Email : {data[0].email}
-                            <br />
-                            Status Reason: {data[0].formReason}
-                            <br />
-                            Status:{data[0].Status}
-                            <br />
-                        </div>
-                        <div className="col-sm-12 text-center">
-                            <br />
-                            <button onClick={onBlacklist} className="reject-btn">Blacklist</button>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
+
         return (
             <div>
                 <Menu />
@@ -145,7 +78,7 @@ class Verify extends Component {
                             <img src={GOI} alt="logo" className="goi-logo"></img>
                         </div>
                         <div className="row">
-                            <div className="col-md-12 col-lg-6">
+                            <div className="col-md-12 col-lg-12">
                                 <div className="serach-head text-center">
                                     Search Aadhar
                         </div>
@@ -156,17 +89,7 @@ class Verify extends Component {
                                 </div>
                                 {checker()}
                             </div>
-                            <div className="col-md-12 col-lg-6">
-                                <div className="serach-head text-center">
-                                    Search Imo
-                        </div>
-                                <div className="search-content text-center">
-                                    <input onChange={handleChange("find")} className="search-bar" placeholder="Enter Aadhar No."></input>
-                                    <br /><br />
-                                    <button onClick={finder} className="search-btn">Search!</button>
-                                </div>
-                                {checker2()}
-                            </div>
+
                         </div>
 
 
