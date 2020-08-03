@@ -3,7 +3,7 @@ import Menu from "../components/menu";
 import { API } from '../Api';
 import { repayReq, cancelReq } from "../helper/ImoHelper";
 import { Form } from "react-bootstrap"
-import Repayment from "../helper/repayment"
+import { Repayment } from "../helper/repayment"
 class ImoLoanInfo extends Component {
     constructor(props) {
         super(props);

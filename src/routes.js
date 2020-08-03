@@ -19,7 +19,10 @@ import LoanPaymentInfo from "./GovtPages/loanPaymentInfo";
 import Search from "./core/search";
 import paymentRecords from "./GovtPages/paymentRecord";
 import ImoList from "./GovtPages/imoInfo";
-import Verify from "./GovtPages/verify"
+import Verify from "./GovtPages/verify";
+import Repayment from "./GovtPages/repayment";
+import RepaymentInfo from "./GovtPages/repaymentInfo";
+
 const Routes = () => {
     return (
         <BrowserRouter>
@@ -38,7 +41,9 @@ const Routes = () => {
                 <Route path="/Imo/loanPayment" exact component={LoanPayment}></Route>
                 <Route path="/Imo/Records" exact component={paymentRecords}></Route>
                 <Route path="/Imo/List" exact component={ImoList}></Route>
+                <Route path="/Repayment" exact component={Repayment}></Route>
                 <Route path="/Verify/Documents" exact component={Verify}></Route>
+                <Route path="/Repayment/info/:id" exact component={RepaymentInfo}></Route>
                 <Route path="/Imo/LoanVerify/info/:id" exact component={LoanVerifyInfo}></Route>
                 <Route path="/Imo/LoanPayment/info/:id" exact component={LoanPaymentInfo}></Route>
                 <Route path="/Imo/ImoVerify/info/:id" exact component={ImoVerifyInfo}></Route>

@@ -15,4 +15,31 @@ const Repayment = (data, id) => {
         .catch(err => console.log(err));
 };
 
-export default Repayment;
+const ApproveRepayment = (id, amount, tranId) => {
+    return fetch(`${API}/approveRepayment/${id}/${amount}/${tranId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+const RejectRepayment = (id) => {
+    return fetch(`${API}/rejectRepayment/${id}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+export { Repayment, ApproveRepayment, RejectRepayment };
